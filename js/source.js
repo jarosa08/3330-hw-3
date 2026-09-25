@@ -163,4 +163,48 @@ $(function () {
         taskList.append(`<li>${task.messsage}</li>`);
     });
 
+    // convert html buttons to jquery buttons
+    $("button").button();
+
+    // convert dashboardtabs into jquery ui tabs
+    $("#dashboardTabs").tabs();
+
+    // convert customerdialog into jquery dialog
+    $("#customerDialog").dialog({
+        autoOpen: false,
+        modal: true,
+        width: 450,
+        buttons: {
+            "Create Customer": function () {
+                var name = $("#customerName").val();
+                var email = $("#customerEmail").val();
+                if (!name || !email) {
+                    alert(
+                        "Please enter a name and email."
+                    );
+                    return;
+                }
+                alert("Customer created: " + name);
+                $(this).dialog("close");
+            },
+            "Cancel": function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    // convert accordion into jquery accordion
+    $("#accordion").accordion({
+        collapsible: true,
+        heightStyle: "content"
+    });
+
+    // add jquery event listener to newcustomnerbutton
+    $("#newCustomerButton").on("click", function() {
+        $("#customerDialog").dialog("open");
+    });
+
+    // convert customerDate into jquery datepicker
+    $("#customerDate").datepicker();
+
     });
