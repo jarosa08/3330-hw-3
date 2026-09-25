@@ -99,9 +99,68 @@ $(function () {
     // Do not modify the JS objects above. You will write your code below.
     // *********************************************************************
 
+    // update revenue amount
+    $(".revenue-amt").html(`${revenueAmt}`);
 
+    // update customer number
+    $("#customer-num").html(`${customerNum}`);
 
-       
+    // update order amount
+    $("#orders-amt").html(`${ordersAmt}`);
 
+    // update issuse amount
+    $("#issues-amt").html(`${issuesAmt}`);
+
+    // update username
+    $("#username").html(`${username}`);
+
+    // update notification amount
+    $("#notification-num").html(`${notifAmt}`);
+
+    // update customer table
+    let customerTable = $("#customerTableBody");
+    customers.forEach( customer => {
+        customerTable.append("<tr>");
+        customerTable.append(`<td>${customer.name}</td>`);
+        customerTable.append(`<td>${customer.email}</td>`);
+        let statusLower = customer.status.valueOf().toLowerCase();
+        customerTable.append(`<td><span class="status status-${statusLower}">${customer.status}</span></td>`);
+        customerTable.append(`<td>${customer.joined}</td>`);
+        customerTable.append("</tr>");
+    });
+
+    // update sales table
+    let salesTable = $("#salesTableBody");
+    sales.forEach( sale => {
+        salesTable.append("<tr>");
+        salesTable.append(`<td>${sale.product}</td>`);
+        salesTable.append(`<td>${sale.quantity}</td>`);
+        salesTable.append(`<td>${sale.revenue}</td>`);
+        salesTable.append("</tr>");
+    });
+
+    // update activites list
+    let activitesList = $("#activity-list");
+    activities.forEach( activity => {
+        activitesList.append(`<li>${activity.message}</li>`);
+    });
+
+    // update system messages list
+    let systemList = $("#system-status-list");
+    messages.forEach( message => {
+        systemList.append(`<li>${message.messsage}</li>`);
+    });
+
+    // update notifications list
+    let notificationList = $("#notifications-list");
+    notifications.forEach( notification => {
+        notificationList.append(`<li>${notification.messsage}</li>`);
+    });
+
+    // update tasks list
+    let taskList = $("#tasks-list");
+    tasks.forEach(task => {
+        taskList.append(`<li>${task.messsage}</li>`);
+    });
 
     });
